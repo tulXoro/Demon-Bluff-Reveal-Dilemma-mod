@@ -36,7 +36,7 @@ public class Shroud : Demon
 
     public override string Description
     {
-        get => "[After you reveal a character, I deal 1 damage to you. \nI Lie and Disguise.]";
+        get => "[After you reveal a character, I deal 1 damage to you. \n\nI Lie and Disguise.]";
     }
 
     // public override Il2CppSystem.Collections.Generic.List<SpecialRule> GetRules()

@@ -330,6 +330,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="Auditor.cs" />
 		<Compile Include="Saboteur.cs" />
 		<Compile Include="Shroud.cs" />
 		<Compile Include="Core.cs" />

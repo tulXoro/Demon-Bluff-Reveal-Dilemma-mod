@@ -25,6 +25,7 @@ namespace RevealDilemmaMod;
     {
         ClassInjector.RegisterTypeInIl2Cpp<Saboteur>();
         ClassInjector.RegisterTypeInIl2Cpp<Shroud>();
+        ClassInjector.RegisterTypeInIl2Cpp<Auditor>();
 
     }
 
@@ -56,7 +57,7 @@ namespace RevealDilemmaMod;
         CharacterData shroud = new CharacterData();
         shroud.role = new Shroud();
         shroud.name = "Shroud";
-        shroud.description = "After you reveal a character, I deal 1 damage to you. \nI Lie and Disguise.";
+        shroud.description = "After you reveal a character, I deal 1 damage to you. \n\nI Lie and Disguise.";
         shroud.flavorText = "\"Awaiting in the darkness, the shroud lurks.\"";
         shroud.hints = "";
         shroud.ifLies = "";
@@ -71,9 +72,28 @@ namespace RevealDilemmaMod;
         shroud.cardBorderColor = new Color(0.8208f, 0f, 0.0241f);
         shroud.color = new Color(1f, 0.3811f, 0.3811f);
 
+        CharacterData auditor = new CharacterData();
+        auditor.role = new Auditor();
+        auditor.name = "Auditor";
+        auditor.description = "Pick 2 characters. Heal 2 for each Villager you selected.";
+        auditor.flavorText = "\"Verifying the legitimacy of the village.\"";
+        auditor.hints = "I Register as a random Outsider.";
+        auditor.ifLies = "I never heal you.";
+        auditor.picking = true;
+        auditor.startingAlignment = EAlignment.Good;
+        auditor.type = ECharacterType.Villager;
+        auditor.abilityUsage = EAbilityUsage.Once;
+        auditor.bluffable = true;
+        auditor.characterId = "auditor_rdm";
+        auditor.artBgColor = new Color(0.111f, 0.0833f, 0.1415f);
+        auditor.cardBgColor = new Color(0.26f, 0.1519f, 0.3396f);
+        auditor.cardBorderColor = new Color(0.7133f, 0.339f, 0.8679f);
+        auditor.color = new Color(1f, 0.935f, 0.7302f);
+
 
         allCharacters.Add(shroud);
         allCharacters.Add(saboteur);
+        allCharacters.Add(auditor);
 
 
         AscensionsData advancedAscension = gameData.advancedAscension;
@@ -82,7 +102,7 @@ namespace RevealDilemmaMod;
         {
             ScriptInfo script = scriptData.scriptInfo;
 
-
+            addRole(script.startingTownsfolks, auditor);
             addRole(script.startingDemons, shroud);
             addRole(script.startingOutsiders, saboteur);
         }
