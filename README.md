@@ -8,7 +8,7 @@ This is a [Demon Bluff](https://store.steampowered.com/app/3522600/Demon_Bluff/)
 
 ### Saboteur
 
-Good Outcast. Deals **3** damage to the player when revealed. Disguises as a random Villager.
+Good Outcast. Deals **4** damage to the player when revealed. Disguises as a random Villager.
 
 ### Shroud
 
