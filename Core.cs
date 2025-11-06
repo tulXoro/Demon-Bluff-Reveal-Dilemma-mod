@@ -87,8 +87,6 @@ namespace RevealDilemmaMod;
             addRole(script.startingOutsiders, saboteur);
         }
 
-        LoggerInstance.Msg("Added reveal dilemma characters to allCharacterData and starting Demon scripts.");
-
         GameplayEvents.OnCharacterRevealed += new Action<Character>(OnCharacterRevealed);
     }
 
@@ -106,8 +104,6 @@ namespace RevealDilemmaMod;
 
         CharacterData charData = revealed.dataRef;
 
-        MelonLogger.Msg($"Character revealed: {charData.name} (ID: {charData.characterId})");
-
         Il2CppSystem.Collections.Generic.List<Character> allChars = new Il2CppSystem.Collections.Generic.List<Character>(Gameplay.CurrentCharacters.Pointer);
         
         bool shroudIsAlive = false;
@@ -122,13 +118,11 @@ namespace RevealDilemmaMod;
         
         if (shroudIsAlive)
         {
-            MelonLogger.Msg("[Shroud Passive] Shroud is alive! Dealing 1 damage to player.");
             PlayerController.PlayerInfo.health.Damage(1);
         }
 
         if (charData.characterId == "sabo_rdm") {
             PlayerController.PlayerInfo.health.Damage(4);
-            MelonLogger.Msg("Dealing damage through global");
         }
     }
 

@@ -45,7 +45,6 @@ public class Saboteur : Role
         if (trigger == ETriggerPhase.Day)
         {
             if (charRef.statuses.Contains(ECharacterStatus.BrokenAbility)) return;
-            MelonLogger.Msg("Dealing damage through act");
             PlayerController.PlayerInfo.health.Damage(4);
         }
     }
