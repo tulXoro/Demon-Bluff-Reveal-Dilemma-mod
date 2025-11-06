@@ -6,17 +6,20 @@ This is a [Demon Bluff](https://store.steampowered.com/app/3522600/Demon_Bluff/)
 
 ## New Roles
 
-### Auditor
-
-Good Villager. Pick two unrevealed characters. Heal 2 for each non-Auditor villager you selected.
-
 ### Saboteur
+    - Good Outcast
+    - Deals 4 damage when revealed
+    - Disguises as random villager
 
-Good Outcast. Deals **4** damage to the player when revealed. Disguises as a random Villager.
+### Shroud 
+    - Evil Demon
+    - Deals damage for each card revealed while alive
+    - Lies and Disguises
 
-### Shroud
-
-Evil Demon. Deals 1 damage everytime the player reveals a card while it is alive.
+### Auditor
+    - Good Villager
+    - Pick 2 characters. Heal 2 for each villager (not including themself) selected.
+    - Registers as a random outcast.
 
 ### Martyr (WIP)
 
