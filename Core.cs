@@ -35,19 +35,40 @@ namespace RevealDilemmaMod;
         Il2Cpp.GameData gameData = ProjectContext.Instance.gameData;
         Il2CppSystem.Collections.Generic.List<CharacterData> allCharacters = gameData.allCharacterData;
 
+        // Sprite alchemistArt = null;
+        // Sprite jesterArt = null;
+        // Sprite wretchArt = null;
+        // foreach (CharacterData character in allCharacters)
+        // {
+        //     MelonLogger.Msg(character.characterId);
+        //     if (character.characterId == "Alchemist_94446803")
+        //     {
+        //         alchemistArt = character.art;
+        //     }
+        //     if (character.characterId == "Wretch_Evil_91222191")
+        //     {
+        //         wretchArt = character.art;
+        //     }
+        //     if (character.characterId == "Jester_41367606")
+        //     {
+        //         jesterArt = character.art;
+        //     }
+        // }
+
         CharacterData saboteur = new CharacterData();
         saboteur.role = new Saboteur();
         saboteur.name = "Saboteur";
-        saboteur.description = "After you reveal me, you take 4 damage. I disguise as a random Villager.";
+        saboteur.description = "After you reveal me, you take 4 damage. I give random info.";
         saboteur.flavorText = "\"It was an accident! I swear!\"";
-        saboteur.hints = "I may disguise as a Villager not in the deck. Because I am an outcast, I usually don't lie.";
-        saboteur.ifLies = "I always disguise as a character in play.";
+        saboteur.hints = "";
+        saboteur.ifLies = "";
         saboteur.picking = false;
         saboteur.startingAlignment = EAlignment.Good;
         saboteur.type = ECharacterType.Outcast;
         saboteur.abilityUsage = EAbilityUsage.Once;
-        saboteur.bluffable = false;
+        saboteur.bluffable = true;
         saboteur.characterId = "sabo_rdm";
+        // saboteur.art = jesterArt;
         saboteur.artBgColor = new Color(0.3679f, 0.2014f, 0.1541f);
         saboteur.cardBgColor = new Color(0.102f, 0.0667f, 0.0392f);
         saboteur.cardBorderColor = new Color(0.7843f, 0.6471f, 0f);
@@ -67,6 +88,7 @@ namespace RevealDilemmaMod;
         shroud.abilityUsage = EAbilityUsage.Once;
         shroud.bluffable = false;
         shroud.characterId = "shroud_rdm";
+        // shroud.art = wretchArt;
         shroud.artBgColor = new Color(1f, 0f, 0f);
         shroud.cardBgColor = new Color(0.0941f, 0.0431f, 0.0431f);
         shroud.cardBorderColor = new Color(0.8208f, 0f, 0.0241f);
@@ -85,11 +107,11 @@ namespace RevealDilemmaMod;
         auditor.abilityUsage = EAbilityUsage.Once;
         auditor.bluffable = true;
         auditor.characterId = "auditor_rdm";
+        // auditor.art = alchemistArt;
         auditor.artBgColor = new Color(0.111f, 0.0833f, 0.1415f);
         auditor.cardBgColor = new Color(0.26f, 0.1519f, 0.3396f);
         auditor.cardBorderColor = new Color(0.7133f, 0.339f, 0.8679f);
         auditor.color = new Color(1f, 0.935f, 0.7302f);
-
 
         allCharacters.Add(shroud);
         allCharacters.Add(saboteur);
