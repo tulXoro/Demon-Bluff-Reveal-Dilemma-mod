@@ -37,7 +37,7 @@ namespace RevealDilemmaMod;
         CharacterData saboteur = new CharacterData();
         saboteur.role = new Saboteur();
         saboteur.name = "Saboteur";
-        saboteur.description = "After you reveal me, you take 3 damage. I disguise as a random Villager.";
+        saboteur.description = "After you reveal me, you take 4 damage. I disguise as a random Villager.";
         saboteur.flavorText = "\"It was an accident! I swear!\"";
         saboteur.hints = "I may disguise as a Villager not in the deck. Because I am an outcast, I usually don't lie.";
         saboteur.ifLies = "I always disguise as a character in play.";
