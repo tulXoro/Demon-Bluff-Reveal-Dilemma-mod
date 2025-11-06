@@ -26,7 +26,21 @@ public class Saboteur : Role
     public Saboteur() : base(ClassInjector.DerivedConstructorPointer<Saboteur>())
     {
         ClassInjector.DerivedConstructorBody((Il2CppObjectBase)this);
-
+        
+        // Initialize infoRoles list
+        infoRoles = new Il2CppSystem.Collections.Generic.List<Role>();
+        infoRoles.Add(new Empath());
+        infoRoles.Add(new Scout());
+        infoRoles.Add(new Investigator());
+        infoRoles.Add(new BountyHunter());
+        infoRoles.Add(new Lookout());
+        infoRoles.Add(new Knitter());
+        infoRoles.Add(new Tracker());
+        infoRoles.Add(new Shugenja());
+        infoRoles.Add(new Noble());
+        infoRoles.Add(new Bishop());
+        infoRoles.Add(new Archivist());
+        infoRoles.Add(new Acrobat2());
     }
 
     public Saboteur(System.IntPtr ptr) : base(ptr)
@@ -34,45 +48,35 @@ public class Saboteur : Role
 
     }
 
+        public override ActedInfo GetInfo(Character charRef)
+    {
+        return infoRoles[UnityEngine.Random.Range(0, infoRoles.Count)].GetInfo(charRef);
+    }
+
     public override string Description
     {
-        get => "[After you reveal me, you take 4 damage. I disguise as a random Villager.]";
+        get => "[After you reveal me, you take 4 damage. I give random info.]";
     }
 
     public override void Act(ETriggerPhase trigger, Character charRef)
     {
-        MelonLogger.Msg($"Act called with trigger: {trigger}");
-        if (trigger == ETriggerPhase.Day)
-        {
-            if (charRef.statuses.Contains(ECharacterStatus.BrokenAbility)) return;
-            PlayerController.PlayerInfo.health.Damage(4);
-        }
+        if (trigger != ETriggerPhase.Day) return;
+        onActed?.Invoke(GetInfo(charRef));
     }
 
-
-    public override CharacterData GetBluffIfAble(Character charRef)
+    public override void BluffAct(ETriggerPhase trigger, Character charRef)
     {
-        if (!charRef.statuses.Contains(ECharacterStatus.Corrupted))
-        {
-            charRef.statuses.AddStatus(ECharacterStatus.HealthyBluff, charRef);
-            
-            Il2Cpp.GameData gameData = ProjectContext.Instance.gameData;
-            Il2CppSystem.Collections.Generic.List<CharacterData> characters = gameData.allCharacterData;
-            characters = Characters.Instance.FilterBluffableCharacters(characters);
-            characters = Characters.Instance.FilterCharacterType(characters, ECharacterType.Villager);
-            characters = Characters.Instance.FilterAlignmentCharacters(characters, EAlignment.Good);
-            CharacterData character = characters[UnityEngine.Random.Range(0, characters.Count)];
-            return character;
-        }
-        else
-        {
-            Il2CppSystem.Collections.Generic.List<Character> characters = new Il2CppSystem.Collections.Generic.List<Character>(Gameplay.CurrentCharacters.Pointer);
-
-            characters = Characters.Instance.FilterBluffableCharacters(characters);
-            characters = Characters.Instance.FilterAlignmentCharacters(characters, EAlignment.Evil);
-
-            return characters[UnityEngine.Random.Range(0, characters.Count)].GetCharacterBluffIfAble();
-        }
+        if (trigger != ETriggerPhase.Day) return;
+        onActed?.Invoke(GetBluffInfo(charRef));
     }
 
+    public override ActedInfo GetBluffInfo(Character charRef)
+    {
+        Role role = infoRoles[UnityEngine.Random.Range(0, infoRoles.Count)];
+        ActedInfo newInfo = role.GetBluffInfo(charRef);
+        return newInfo;
+    }
+
+    
+    public Il2CppSystem.Collections.Generic.List<Role> infoRoles;
 }
