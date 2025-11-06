@@ -98,12 +98,61 @@ namespace RevealDilemmaMod;
 
         AscensionsData advancedAscension = gameData.advancedAscension;
 
+        
+        CustomScriptData shroudScriptData = new CustomScriptData();
+        shroudScriptData.name = "Shroud1";
+        ScriptInfo shroudScript = new ScriptInfo();
+        
+        Il2CppSystem.Collections.Generic.List<CharacterData> shroudMustInclude = new Il2CppSystem.Collections.Generic.List<CharacterData>();
+        shroudMustInclude.Add(shroud);
+        shroudMustInclude.Add(auditor);
+        shroudScript.mustInclude = shroudMustInclude;
+        
+        Il2CppSystem.Collections.Generic.List<CharacterData> shroudDemonList = new Il2CppSystem.Collections.Generic.List<CharacterData>();
+        shroudDemonList.Add(shroud);
+        shroudScript.startingDemons = shroudDemonList;
+        
+        Il2CppSystem.Collections.Generic.List<CharacterData> shroudTownsfolkList = new Il2CppSystem.Collections.Generic.List<CharacterData>(ProjectContext.Instance.gameData.advancedAscension.possibleScriptsData[0].scriptInfo.startingTownsfolks.Pointer);
+        shroudTownsfolkList.Add(auditor);
+        shroudScript.startingTownsfolks = shroudTownsfolkList;
+        shroudScript.startingOutsiders = ProjectContext.Instance.gameData.advancedAscension.possibleScriptsData[0].scriptInfo.startingOutsiders;
+        shroudScript.startingMinions = ProjectContext.Instance.gameData.advancedAscension.possibleScriptsData[0].scriptInfo.startingMinions;
+        CharactersCount shroudCounter1 = new CharactersCount(7, 4, 1, 1, 1);
+        shroudCounter1.dOuts = shroudCounter1.outs + 1;
+        CharactersCount shroudCounter2 = new CharactersCount(8, 5, 1, 1, 1);
+        shroudCounter2.dOuts = shroudCounter2.outs + 1;
+        CharactersCount shroudCounter3 = new CharactersCount(9, 5, 1, 2, 1);
+        shroudCounter3.dOuts = shroudCounter3.outs + 1;
+        CharactersCount shroudCounter4 = new CharactersCount(10, 6, 1, 1, 2);
+        shroudCounter4.dOuts = shroudCounter4.outs + 1;
+        Il2CppSystem.Collections.Generic.List<CharactersCount> shroudCounterList = new Il2CppSystem.Collections.Generic.List<CharactersCount>();
+        shroudCounterList.Add(shroudCounter1);
+        shroudCounterList.Add(shroudCounter2);
+        shroudCounterList.Add(shroudCounter3);
+        shroudCounterList.Add(shroudCounter4);
+        shroudScript.characterCounts = shroudCounterList;
+        shroudScriptData.scriptInfo = shroudScript;
+
+
+        Il2CppReferenceArray<CharacterData> advancedAscensionDemons = new Il2CppReferenceArray<CharacterData>(advancedAscension.demons.Length + 1);
+        advancedAscensionDemons = advancedAscension.demons;
+        advancedAscensionDemons[advancedAscensionDemons.Length - 1] = shroud;
+        advancedAscension.demons = advancedAscensionDemons;
+        Il2CppReferenceArray<CharacterData> advancedAscensionStartingDemons = new Il2CppReferenceArray<CharacterData>(advancedAscension.startingDemons.Length + 1);
+        advancedAscensionStartingDemons = advancedAscension.startingDemons;
+        advancedAscensionStartingDemons[advancedAscensionStartingDemons.Length - 1] = shroud;
+        advancedAscension.startingDemons = advancedAscensionStartingDemons;
+        Il2CppReferenceArray<CustomScriptData> advancedAscensionScriptsData = new Il2CppReferenceArray<CustomScriptData>(advancedAscension.possibleScriptsData.Length + 1);
+        advancedAscensionScriptsData = advancedAscension.possibleScriptsData;
+        advancedAscensionScriptsData[advancedAscensionScriptsData.Length - 1] = shroudScriptData;
+        advancedAscension.possibleScriptsData = advancedAscensionScriptsData;
+
         foreach (CustomScriptData scriptData in advancedAscension.possibleScriptsData)
         {
             ScriptInfo script = scriptData.scriptInfo;
 
             addRole(script.startingTownsfolks, auditor);
-            addRole(script.startingDemons, shroud);
+            // addRole(script.startingDemons, shroud);
             addRole(script.startingOutsiders, saboteur);
         }
 
