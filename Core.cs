@@ -139,18 +139,18 @@ namespace RevealDilemmaMod;
         shroudScript.startingTownsfolks = shroudTownsfolkList;
         shroudScript.startingOutsiders = ProjectContext.Instance.gameData.advancedAscension.possibleScriptsData[0].scriptInfo.startingOutsiders;
         shroudScript.startingMinions = ProjectContext.Instance.gameData.advancedAscension.possibleScriptsData[0].scriptInfo.startingMinions;
-        CharactersCount shroudCounter1 = new CharactersCount(7, 4, 1, 1, 1);
-        shroudCounter1.dOuts = shroudCounter1.outs + 1;
-        CharactersCount shroudCounter2 = new CharactersCount(8, 5, 1, 1, 1);
-        shroudCounter2.dOuts = shroudCounter2.outs + 1;
-        CharactersCount shroudCounter3 = new CharactersCount(9, 5, 1, 2, 1);
-        shroudCounter3.dOuts = shroudCounter3.outs + 1;
+        // CharactersCount shroudCounter1 = new CharactersCount(7, 4, 1, 1, 1);
+        // shroudCounter1.dOuts = shroudCounter1.outs + 1;
+        // CharactersCount shroudCounter2 = new CharactersCount(8, 5, 1, 1, 1);
+        // shroudCounter2.dOuts = shroudCounter2.outs + 1;
+        // CharactersCount shroudCounter3 = new CharactersCount(9, 5, 1, 2, 1);
+        // shroudCounter3.dOuts = shroudCounter3.outs + 1;
         CharactersCount shroudCounter4 = new CharactersCount(10, 6, 1, 1, 2);
         shroudCounter4.dOuts = shroudCounter4.outs + 1;
         Il2CppSystem.Collections.Generic.List<CharactersCount> shroudCounterList = new Il2CppSystem.Collections.Generic.List<CharactersCount>();
-        shroudCounterList.Add(shroudCounter1);
-        shroudCounterList.Add(shroudCounter2);
-        shroudCounterList.Add(shroudCounter3);
+        // shroudCounterList.Add(shroudCounter1);
+        // shroudCounterList.Add(shroudCounter2);
+        // shroudCounterList.Add(shroudCounter3);
         shroudCounterList.Add(shroudCounter4);
         shroudScript.characterCounts = shroudCounterList;
         shroudScriptData.scriptInfo = shroudScript;
@@ -212,9 +212,11 @@ namespace RevealDilemmaMod;
             PlayerController.PlayerInfo.health.Damage(1);
         }
 
-        if (charData.characterId == "sabo_rdm") {
+        if (charData.characterId == "sabo_rdm")
+        {
             PlayerController.PlayerInfo.health.Damage(4);
         }
+    
     }
 
 
